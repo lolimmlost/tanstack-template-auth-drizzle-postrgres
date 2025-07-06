@@ -57,7 +57,8 @@ These scripts in [package.json](./package.json#L5) use **pnpm** by default, but 
 - **`auth:generate`** - Regenerate the [auth db schema](./src/lib/db/schema/auth.schema.ts) if you've made changes to your Better Auth [config](./src/lib/auth/index.ts).
 - **`db`** - Run drizzle-kit commands. (e.g. `pnpm db generate` to generate a migration)
 - **`ui`** - The shadcn/ui CLI. (e.g. `pnpm ui add button` to add the button component)
-- **`format`** and **`lint`** - Run Prettier and ESLint.
+- **`format`**, **`lint`**, **`check-types`** - Run Prettier, ESLint, and check TypeScript types respectively.
+  - **`check`** - Run all three above. (e.g. `pnpm check`)
 - **`deps`** - Selectively upgrade dependencies via taze.
 
 #### Utilities
