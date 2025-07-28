@@ -29,5 +29,6 @@ export default tseslint.config({
   rules: {
     // You can override any rules here
     "react-hooks/react-compiler": "warn",
+    "@typescript-eslint/no-deprecated": "warn",
   },
 });
