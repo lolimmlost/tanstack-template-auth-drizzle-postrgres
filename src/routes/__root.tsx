@@ -4,7 +4,6 @@ import {
   createRootRouteWithContext,
   HeadContent,
   Outlet,
-  ScriptOnce,
   Scripts,
 } from "@tanstack/react-router";
 
@@ -13,6 +12,9 @@ import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
 import { getUser } from "~/lib/auth/functions/getUser";
 import appCss from "~/styles.css?url";
+
+import { ThemeProvider } from "~/components/theme-provider";
+import { Toaster } from "~/components/ui/sonner";
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
@@ -57,20 +59,16 @@ function RootComponent() {
 
 function RootDocument({ children }: { readonly children: React.ReactNode }) {
   return (
-    // suppress since we're updating the "dark" class in a custom script below
+    // suppress since we're updating the "dark" class in ThemeProvider
     <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
       <body>
-        <ScriptOnce>
-          {`document.documentElement.classList.toggle(
-            'dark',
-            localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-            )`}
-        </ScriptOnce>
-
-        {children}
+        <ThemeProvider>
+          {children}
+          <Toaster richColors />
+        </ThemeProvider>
 
         <ReactQueryDevtools buttonPosition="bottom-right" />
         <TanStackRouterDevtools position="bottom-right" />
