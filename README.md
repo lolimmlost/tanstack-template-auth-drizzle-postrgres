@@ -46,7 +46,7 @@ We're using **pnpm** by default, but you can modify the scripts in [package.json
 ## Issue watchlist
 
 - [React Compiler docs](https://react.dev/learn/react-compiler), [Working Group](https://github.com/reactwg/react-compiler/discussions) - React Compiler is in RC.
-- https://github.com/TanStack/router/discussions/2863 - TanStack Start is in beta may still undergo major changes.
+- https://github.com/TanStack/router/discussions/2863 - TanStack Start is in beta and may still undergo major changes.
 
 ## Goodies
 
