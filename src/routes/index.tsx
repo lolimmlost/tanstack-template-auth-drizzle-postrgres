@@ -20,7 +20,7 @@ function Home() {
     <div className="flex min-h-svh flex-col items-center justify-center gap-10 p-2">
       <div className="flex flex-col items-center gap-4">
         <h1 className="text-3xl font-bold sm:text-4xl">React TanStarter</h1>
-        <div className="flex items-center gap-2 max-sm:flex-col">
+        <div className="flex items-center gap-2 text-sm max-sm:flex-col">
           This is an unprotected page:
           <pre className="bg-card text-card-foreground rounded-md border p-1">
             routes/index.tsx
@@ -71,6 +71,7 @@ function Home() {
 
       <div className="flex flex-col items-center gap-2">
         <ThemeToggle />
+        <p className="mt-2">A minimal starter template for 🏝️ TanStack Start.</p>
         <a
           className="text-muted-foreground hover:text-foreground underline"
           href="https://github.com/dotnize/react-tanstarter"

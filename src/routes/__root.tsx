@@ -21,8 +21,8 @@ export const Route = createRootRouteWithContext<{
   user: Awaited<ReturnType<typeof getUser>>;
 }>()({
   beforeLoad: async ({ context }) => {
-    // we're using react-query for client-side caching to reduce server calls, see /src/router.tsx
-    // note that better-auth's cookieCache is also enabled server-side to reduce db calls, see /src/lib/auth/index.ts
+    // we're using react-query for client-side caching to reduce client-to-server calls, see /src/router.tsx
+    // better-auth's cookieCache is also enabled server-side to reduce server-to-db calls, see /src/lib/auth/index.ts
     const user = await context.queryClient.ensureQueryData({
       queryKey: ["user"],
       queryFn: ({ signal }) => getUser({ signal }),
