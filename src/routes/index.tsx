@@ -46,7 +46,7 @@ function Home() {
               await authClient.signOut({
                 fetchOptions: {
                   onResponse: async () => {
-                    await queryClient.setQueryData(["user"], null);
+                    queryClient.setQueryData(["user"], null);
                     await router.invalidate();
                   },
                 },
@@ -70,16 +70,21 @@ function Home() {
       )}
 
       <div className="flex flex-col items-center gap-2">
-        <ThemeToggle />
-        <p className="mt-2">A minimal starter template for 🏝️ TanStack Start.</p>
-        <a
-          className="text-muted-foreground hover:text-foreground underline"
-          href="https://github.com/dotnize/react-tanstarter"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          dotnize/react-tanstarter
-        </a>
+        <p className="max-sm:text-xs">
+          A minimal starter template for 🏝️ TanStack Start.
+        </p>
+        <div className="flex items-center gap-2">
+          <a
+            className="text-muted-foreground hover:text-foreground underline max-sm:text-sm"
+            href="https://github.com/dotnize/react-tanstarter"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
+            dotnize/react-tanstarter
+          </a>
+
+          <ThemeToggle />
+        </div>
       </div>
     </div>
   );
