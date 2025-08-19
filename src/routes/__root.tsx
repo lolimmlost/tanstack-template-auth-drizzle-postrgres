@@ -10,7 +10,7 @@ import {
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
-import { getUser } from "~/lib/auth/functions/getUser";
+import { $getUser } from "~/lib/auth/functions";
 import appCss from "~/styles.css?url";
 
 import { ThemeProvider } from "~/components/theme-provider";
@@ -18,14 +18,14 @@ import { Toaster } from "~/components/ui/sonner";
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
-  user: Awaited<ReturnType<typeof getUser>>;
+  user: Awaited<ReturnType<typeof $getUser>>;
 }>()({
   beforeLoad: async ({ context }) => {
     // we're using react-query for client-side caching to reduce client-to-server calls, see /src/router.tsx
-    // better-auth's cookieCache is also enabled server-side to reduce server-to-db calls, see /src/lib/auth/index.ts
+    // better-auth's cookieCache is also enabled server-side to reduce server-to-db calls, see /src/lib/auth/auth.ts
     const user = await context.queryClient.ensureQueryData({
       queryKey: ["user"],
-      queryFn: ({ signal }) => getUser({ signal }),
+      queryFn: ({ signal }) => $getUser({ signal }),
       revalidateIfStale: true,
     });
     return { user };
