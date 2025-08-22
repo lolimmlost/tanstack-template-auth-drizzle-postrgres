@@ -39,6 +39,12 @@ function LoginForm() {
           setErrorMessage(ctx.error.message);
           setIsLoading(false);
         },
+        // better-auth seems to trigger a hard navigation on login,
+        // so we don't have to revalidate & navigate ourselves
+        // onSuccess: () => {
+        //   queryClient.removeQueries({ queryKey: ["user"] });
+        //   navigate({ to: redirectUrl });
+        // },
       },
     );
   };
