@@ -46,6 +46,7 @@ function Home() {
               await authClient.signOut({
                 fetchOptions: {
                   onResponse: async () => {
+                    // manually set to null to avoid unnecessary refetching
                     queryClient.setQueryData(["user"], null);
                     await router.invalidate();
                   },

@@ -51,8 +51,8 @@ function SignupForm() {
           setErrorMessage(ctx.error.message);
           setIsLoading(false);
         },
-        onSuccess: async () => {
-          await queryClient.invalidateQueries({ queryKey: ["user"] });
+        onSuccess: () => {
+          queryClient.removeQueries({ queryKey: ["user"] });
           navigate({ to: redirectUrl });
         },
       },
