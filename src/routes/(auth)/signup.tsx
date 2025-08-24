@@ -6,6 +6,7 @@ import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import authClient from "~/lib/auth/auth-client";
+import { authQueryOptions } from "~/lib/auth/queries";
 
 export const Route = createFileRoute("/(auth)/signup")({
   component: SignupForm,
@@ -52,7 +53,7 @@ function SignupForm() {
           setIsLoading(false);
         },
         onSuccess: () => {
-          queryClient.removeQueries({ queryKey: ["user"] });
+          queryClient.removeQueries({ queryKey: authQueryOptions().queryKey });
           navigate({ to: redirectUrl });
         },
       },

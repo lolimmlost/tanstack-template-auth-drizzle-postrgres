@@ -3,6 +3,7 @@ import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
 import { ThemeToggle } from "~/components/theme-toggle";
 import { Button } from "~/components/ui/button";
 import authClient from "~/lib/auth/auth-client";
+import { authQueryOptions } from "~/lib/auth/queries";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -47,7 +48,7 @@ function Home() {
                 fetchOptions: {
                   onResponse: async () => {
                     // manually set to null to avoid unnecessary refetching
-                    queryClient.setQueryData(["user"], null);
+                    queryClient.setQueryData(authQueryOptions().queryKey, null);
                     await router.invalidate();
                   },
                 },
